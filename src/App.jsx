@@ -24,12 +24,31 @@ import AdminDashboard from "./components/AdminDashboard";
 import { useAuth } from "./context/AuthContext.jsx";
 import { Heart, Check, AlertCircle, X } from "lucide-react";
 
+function pageToPath(page, category) {
+  if (page === "category") return `/category/${category}`;
+  const map = { home: "/", about: "/about", "all-products": "/shop", products: "/products", privacy: "/privacy", "return-policy": "/return-policy" };
+  return map[page] || "/";
+}
+
+function pathToPage(pathname) {
+  const p = pathname.replace(/\/+$/, "") || "/";
+  if (p === "/about") return { page: "about" };
+  if (p === "/shop" || p === "/all-products") return { page: "all-products" };
+  if (p === "/products") return { page: "products" };
+  if (p === "/privacy") return { page: "privacy" };
+  if (p === "/return-policy") return { page: "return-policy" };
+  const catMatch = p.match(/^\/category\/(.+)$/);
+  if (catMatch) return { page: "category", category: decodeURIComponent(catMatch[1]) };
+  return { page: "home" };
+}
+
 function App() {
   const { user: currentUser, isAdmin, loading: authLoading, adminJustSignedIn, setAdminJustSignedIn } = useAuth();
+  const initial = pathToPage(window.location.pathname);
   const [toast, setToast] = useState({ message: "", type: "success", visible: false });
   const [isFavOpen, setIsFavOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState(initial.page);
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -37,7 +56,29 @@ function App() {
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isAdminView, setIsAdminView] = useState(false);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("soaps");
+  const [activeCategory, setActiveCategory] = useState(initial.category || "soaps");
+
+  const navigateTo = (page, opts = {}) => {
+    const cat = opts.category || activeCategory;
+    if (opts.category) setActiveCategory(opts.category);
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+    const path = pageToPath(page, cat);
+    if (window.location.pathname !== path) {
+      window.history.pushState({ page, category: cat }, "", path);
+    }
+  };
+
+  useEffect(() => {
+    const onPopState = () => {
+      const { page, category } = pathToPage(window.location.pathname);
+      setCurrentPage(page);
+      if (category) setActiveCategory(category);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
   const showToast = (message, type = "success") => {
     setToast({ message, type, visible: true });
   };
@@ -169,30 +210,14 @@ function App() {
             cartCount: cart.reduce((sum, item) => sum + item.quantity, 0),
             onCartClick: () => setIsCartOpen(true),
             onFavoritesClick: () => setIsFavOpen(true),
-            onNavigateToProducts: (category) => {
-              setCurrentPage("products");
-              window.scrollTo(0, 0);
-            },
-            onNavigateToAllProducts: () => {
-              setCurrentPage("all-products");
-              window.scrollTo(0, 0);
-            },
-            onNavigateToCategory: (slug) => {
-              setCurrentPage("category");
-              setActiveCategory(slug);
-              window.scrollTo(0, 0);
-            },
+            onNavigateToProducts: () => navigateTo("products"),
+            onNavigateToAllProducts: () => navigateTo("all-products"),
+            onNavigateToCategory: (slug) => navigateTo("category", { category: slug }),
             favoritesCount: favorites.length,
             currentPage,
             activeCategory,
-            onAboutClick: () => {
-              setCurrentPage("about");
-              window.scrollTo(0, 0);
-            },
-            onLogoClick: () => {
-              setCurrentPage("home");
-              window.scrollTo(0, 0);
-            },
+            onAboutClick: () => navigateTo("about"),
+            onLogoClick: () => navigateTo("home"),
             user: currentUser,
             onUserClick: () => setIsAuthOpen(true)
           }
@@ -208,8 +233,8 @@ function App() {
               jsx(
                 FirstSection,
                 {
-                  onShowNowClick: () => setCurrentPage("products"),
-                  onNavigateToShop: () => setCurrentPage("all-products"),
+                  onShowNowClick: () => navigateTo("products"),
+                  onNavigateToShop: () => navigateTo("all-products"),
                   onOpenProduct: (_e, id) => {
                     const product = NumaStore.getProducts().find((p) => p.id === id);
                     if (product) setSelectedProduct(product);
@@ -220,10 +245,7 @@ function App() {
               jsx(
                 SecondSection,
                 {
-                  onLearnMoreClick: () => {
-                    setCurrentPage("about");
-                    window.scrollTo(0, 0);
-                  }
+                  onLearnMoreClick: () => navigateTo("about")
                 }
               ),
               jsx(FourthSection, {}),
@@ -268,10 +290,7 @@ function App() {
               {
                 categorySlug: activeCategory,
                 onAddProductToCart: handleAddProductToCart,
-                onNavigateHome: () => {
-                  setCurrentPage("home");
-                  window.scrollTo(0, 0);
-                },
+                onNavigateHome: () => navigateTo("home"),
                 showToast,
                 favorites,
                 onToggleFavorite: handleToggleFavorite,
@@ -287,12 +306,9 @@ function App() {
             animate: { opacity: 1 },
             exit: { opacity: 0 },
             transition: { duration: 0.4 },
-            children: jsx(AboutPage, {
+              children: jsx(AboutPage, {
               onAddProductToCart: handleAddProductToCart,
-              onNavigateHome: () => {
-                setCurrentPage("home");
-                window.scrollTo(0, 0);
-              },
+              onNavigateHome: () => navigateTo("home"),
               showToast
             })
           },
@@ -305,10 +321,7 @@ function App() {
             exit: { opacity: 0 },
             transition: { duration: 0.4 },
             children: jsx(PrivacyPolicy, {
-              onNavigateHome: () => {
-                setCurrentPage("home");
-                window.scrollTo(0, 0);
-              }
+              onNavigateHome: () => navigateTo("home")
             })
           },
           "privacy-view"
@@ -320,10 +333,7 @@ function App() {
             exit: { opacity: 0 },
             transition: { duration: 0.4 },
             children: jsx(ReturnPolicy, {
-              onNavigateHome: () => {
-                setCurrentPage("home");
-                window.scrollTo(0, 0);
-              }
+              onNavigateHome: () => navigateTo("home")
             })
           },
           "return-policy-view"
@@ -347,14 +357,8 @@ function App() {
           "products-view"
         ) }) }),
         jsx(Footer, {
-          onPrivacyClick: () => {
-            setCurrentPage("privacy");
-            window.scrollTo(0, 0);
-          },
-          onReturnPolicyClick: () => {
-            setCurrentPage("return-policy");
-            window.scrollTo(0, 0);
-          }
+          onPrivacyClick: () => navigateTo("privacy"),
+          onReturnPolicyClick: () => navigateTo("return-policy")
         }),
         jsx(
           CartDrawer,
@@ -379,29 +383,23 @@ function App() {
             onFavoritesClick: () => setIsFavOpen(true),
             onNavigateToProducts: (category) => {
               setSelectedProduct(null);
-              setCurrentPage("products");
-              window.scrollTo(0, 0);
+              navigateTo("products");
             },
             onNavigateToAllProducts: () => {
               setSelectedProduct(null);
-              setCurrentPage("all-products");
-              window.scrollTo(0, 0);
+              navigateTo("all-products");
             },
             onNavigateToCategory: (slug) => {
               setSelectedProduct(null);
-              setCurrentPage("category");
-              setActiveCategory(slug);
-              window.scrollTo(0, 0);
+              navigateTo("category", { category: slug });
             },
             onAboutClick: () => {
               setSelectedProduct(null);
-              setCurrentPage("about");
-              window.scrollTo(0, 0);
+              navigateTo("about");
             },
             onLogoClick: () => {
               setSelectedProduct(null);
-              setCurrentPage("home");
-              window.scrollTo(0, 0);
+              navigateTo("home");
             },
             currentPage,
             user: currentUser,
