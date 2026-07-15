@@ -226,7 +226,7 @@ const DEFAULT_CATEGORIES = [
   { name: "Oral Supplements", count: 2 }
 ];
 const DEFAULT_ORDERS = [];
-const STORAGE_KEY = "numa_store_v3";
+const STORAGE_KEY = "numa_store_v4";
 function loadStore() {
   const data = localStorage.getItem(STORAGE_KEY);
   if (!data) {
