@@ -71,7 +71,7 @@ function Header({
                 children: /* @__PURE__ */ jsx(motion.img, {
                   whileHover: { scale: 1.05 },
                   whileTap: { scale: 0.95 },
-                  src: "/src/assets/images/logo.png",
+                  src: "/images/logo.png",
                   alt: "Biotech Sciences",
                   className: "h-8 md:h-10 w-auto"
                 })

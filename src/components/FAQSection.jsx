@@ -64,7 +64,7 @@ function FAQSection() {
           /* @__PURE__ */ jsx(
             "img",
             {
-              src: "/src/assets/images/skincare_cream_small_1783091715408.png",
+              src: "/images/skincare_cream_small_1783091715408.png",
               alt: "Skincare cream jar on wooden pedestal",
               className: "w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700",
               referrerPolicy: "no-referrer"

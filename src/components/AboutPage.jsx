@@ -324,7 +324,7 @@ function AboutPage({ onAddProductToCart, onNavigateHome, showToast }) {
           {/* <div className="absolute w-[80%] h-[30px] bg-black/10 blur-xl rounded-full bottom-8 rotate-[5deg] opacity-70" /> */}
           <img
             ref={bottleRef}
-            src="/src/assets/images/biotech_facewash.png"
+            src="/images/biotech_facewash.png"
             alt="Biotech Liposomal Facewash"
             className="absolute w-full h-full object-contain filter drop-shadow-xl select-none"
             referrerPolicy="no-referrer"

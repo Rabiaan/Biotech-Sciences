@@ -110,7 +110,7 @@ async function startServer() {
         salePrice: prodData.salePrice != null && prodData.salePrice !== "" ? Number(prodData.salePrice) : null,
         saleStart: prodData.saleStart ? new Date(prodData.saleStart) : null,
         saleEnd: prodData.saleEnd ? new Date(prodData.saleEnd) : null,
-        image: sanitizeString(prodData.image || "/src/assets/images/Anti-Fungal Soap.png", 500),
+        image: sanitizeString(prodData.image || "/images/Anti-Fungal Soap.png", 500),
         description: sanitizeString(prodData.description || "A gorgeous formulation designed for beauty and skin-wellness.", 5000),
         details: Array.isArray(prodData.details) ? prodData.details.map((d) => sanitizeString(d, 500)) : [],
         volume: sanitizeString(prodData.volume || "150 ml", 50),
@@ -248,7 +248,7 @@ async function startServer() {
   app.get("/api/media/images", requireAdmin, async (_req, res) => {
     try {
       const mediaDir = path.join(process.cwd(), "media");
-      const assetsImagesDir = path.join(process.cwd(), "src", "assets", "images");
+      const assetsImagesDir = path.join(process.cwd(), "public", "images");
       const IMAGE_EXT = /\.(png|jpe?g|webp|gif|avif|svg)$/i;
       const collect = (dir, urlPrefix) => {
         try {
@@ -260,7 +260,7 @@ async function startServer() {
           return [];
         }
       };
-      const fromAssets = collect(assetsImagesDir, "/src/assets/images");
+      const fromAssets = collect(assetsImagesDir, "/images");
       const fromMedia = collect(mediaDir, "/media");
       const byName = new Map();
       for (const img of fromMedia) byName.set(img.name, img);
@@ -622,9 +622,9 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    const assetsPath = path.join(process.cwd(), "src/assets");
+    const publicPath = path.join(process.cwd(), "public");
     app.use(express.static(distPath));
-    app.use(express.static(assetsPath));
+    app.use(express.static(publicPath));
     app.get("*", (_req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });

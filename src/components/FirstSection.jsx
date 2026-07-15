@@ -57,7 +57,7 @@ function FirstSection({ onOpenProduct, onNavigateToShop }) {
                 /* @__PURE__ */ jsx(
                   "img",
                   {
-                    src: "/src/assets/images/Hyasomal Complete Repair Complex Serum.png",
+                    src: "/images/Hyasomal Complete Repair Complex Serum.png",
                     alt: "Hyasomal Complete Repair Complex Serum",
                     className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500",
                     referrerPolicy: "no-referrer"
@@ -87,7 +87,7 @@ function FirstSection({ onOpenProduct, onNavigateToShop }) {
                   /* @__PURE__ */ jsx(
                   "img",
                   {
-                    src: "/src/assets/images/skincare_woman_serum_1783091693743.png",
+                    src: "/images/skincare_woman_serum_1783091693743.png",
                     alt: "Skincare client holding avocado",
                     className: "w-full h-full object-cover",
                     referrerPolicy: "no-referrer"
@@ -97,7 +97,7 @@ function FirstSection({ onOpenProduct, onNavigateToShop }) {
                   /* @__PURE__ */ jsx("div", { className: "w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-white border border-[#19221f]/10", children: /* @__PURE__ */ jsx(
                     "img",
                     {
-                      src: "/src/assets/images/skincare_cream_small_1783091715408.png",
+                      src: "/images/skincare_cream_small_1783091715408.png",
                       alt: "Mini Product",
                       className: "w-full h-full object-cover",
                       referrerPolicy: "no-referrer"

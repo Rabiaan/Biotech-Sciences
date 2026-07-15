@@ -4,7 +4,7 @@ const PRODUCTS = [
     name: "Liposomal Anti-Fungal Soap",
     subtitle: "LIPOSOMAL ANTI-FUNGAL SOAP",
     price: 14.99,
-    image: "/src/assets/images/Anti-Fungal Soap.png",
+    image: "/images/Anti-Fungal Soap.png",
     description: "Advanced, clinically inspired liposomal bar soap engineered to target fungal-prone skin with continuous, gentle active delivery.",
     details: [
       "Sulfur (10%)",
@@ -22,7 +22,7 @@ const PRODUCTS = [
     name: "Liposomal L-Glutathione Soap",
     subtitle: "LIPOSOMAL L-GLUTATHIONE SOAP",
     price: 14.99,
-    image: "/src/assets/images/Glutathione Soap.png",
+    image: "/images/Glutathione Soap.png",
     description: "Scientific brightening bar soap formulated with liposomal glutathione and supportive antioxidants for visibly refined, even-toned skin.",
     details: [
       "Glutathione",
@@ -40,7 +40,7 @@ const PRODUCTS = [
     name: "Liposomal Anti-Hair Fall Hair Nourishment Medicated Shampoo",
     subtitle: "LIPOSOMAL ANTI-HAIR FALL SHAMPOO",
     price: 19.99,
-    image: "/src/assets/images/Anti-Hair Fall Shampoo.png",
+    image: "/images/Anti-Hair Fall Shampoo.png",
     description: "Medicated shampoo delivering supportive liposomal actives for hair strength—engineered to reduce the look of shedding and nourish the scalp.",
     details: [
       "Biotin",
@@ -59,7 +59,7 @@ const PRODUCTS = [
     name: "Liposomal Anti-Acne Medicated Facewash",
     subtitle: "LIPOSOMAL ANTI-ACNE FACEWASH",
     price: 18.99,
-    image: "/src/assets/images/Anti-Acne Facewash.png",
+    image: "/images/Anti-Acne Facewash.png",
     description: "Clinical liposomal medicated facewash designed for clearer-looking skin—supports acne management with layered, continuous active release.",
     details: [
       "Salicylic Acid",
@@ -78,7 +78,7 @@ const PRODUCTS = [
     name: "Liposomal Medicated Brightening Facewash",
     subtitle: "LIPOSOMAL MEDICATED BRIGHTENING FACEWASH",
     price: 18.99,
-    image: "/src/assets/images/Medicated Brightening Facewash.png",
+    image: "/images/Medicated Brightening Facewash.png",
     description: "Brightening liposomal facewash formulated with multifunctional botanicals and antioxidants to support a more even, luminous complexion.",
     details: [
       "Alpha Arbutin",
@@ -99,7 +99,7 @@ const PRODUCTS = [
     name: "Skinosome",
     subtitle: "DARK SPOT TREATMENT SKINOSOME",
     price: 24.99,
-    image: "/src/assets/images/Skinosome Cream Tube.png",
+    image: "/images/Skinosome Cream Tube.png",
     description: "Dark spot treatment cream engineered to support targeted pigment reduction while improving comfort and visibly refined skin texture.",
     details: [
       "Vitamin E",
@@ -118,7 +118,7 @@ const PRODUCTS = [
     name: "Liposomal Brightening Cream",
     subtitle: "LIPOSOMAL BRIGHTENING CREAM",
     price: 26.99,
-    image: "/src/assets/images/Liposomal Brightening Cream.png",
+    image: "/images/Liposomal Brightening Cream.png",
     description: "Liposomal brightening cream designed for antioxidant support and hydration—helps deliver a visibly smoother, more luminous complexion.",
     details: [
       "Glutathione",
@@ -136,7 +136,7 @@ const PRODUCTS = [
     name: "Liposomal Acne Repair Complex",
     subtitle: "LIPOSOMAL ACNE REPAIR COMPLEX",
     price: 21.99,
-    image: "/src/assets/images/Acne Repair Complex Serum (dropper).png",
+    image: "/images/Acne Repair Complex Serum (dropper).png",
     description: "Targeted acne repair serum powered by dermatology-forward actives—supports clearer appearance while calming the look of stressed skin.",
     details: [
       "Azelaic Acid Gel",
@@ -153,7 +153,7 @@ const PRODUCTS = [
     name: "Hyasomal Complete Repair Complex",
     subtitle: "HYASOMAL COMPLETE REPAIR COMPLEX",
     price: 23.99,
-    image: "/src/assets/images/Hyasomal Complete Repair Complex Serum.png",
+    image: "/images/Hyasomal Complete Repair Complex Serum.png",
     description: "Hyasomal repair complex engineered to support barrier recovery, wrinkle comfort, and hydrated plumpness for resilient-looking skin.",
     details: [
       "DMAE",
@@ -172,7 +172,7 @@ const PRODUCTS = [
     name: "Liposomal L-Glutathione 500mg",
     subtitle: "LIPOSOMAL L-GLUTATHIONE 500MG",
     price: 29.99,
-    image: "/src/assets/images/L-Glutathione 500mg Supplement.png",
+    image: "/images/L-Glutathione 500mg Supplement.png",
     description: "Liposomal glutathione supplement engineered for higher bioavailability support alongside antioxidant co-actives.",
     details: [
       "+ Alpha Lipoic Acid",
@@ -189,7 +189,7 @@ const PRODUCTS = [
     name: "Hyasomal — Sodium Hyaluronate 200mg",
     subtitle: "HYASOMAL SODIUM HYALURONATE 200MG",
     price: 27.99,
-    image: "/src/assets/images/Hyasomal Boxes.png",
+    image: "/images/Hyasomal Boxes.png",
     description: "Hyasomal sodium hyaluronate supplement engineered for hydration support—designed for daily wellness routines.",
     details: [
       "Hyasomal delivery",

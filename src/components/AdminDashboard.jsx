@@ -304,7 +304,7 @@ function AdminDashboard({ onClose, showToast }) {
       return;
     }
     const filteredDetails = newProdDetails.filter((d) => d.trim() !== "");
-    const selectedImage = newProdImage || "/src/assets/images/Anti-Fungal Soap.png";
+    const selectedImage = newProdImage || "/images/Anti-Fungal Soap.png";
     NumaStore.addProduct({
       name: newProdName,
       category: newProdCategory,
@@ -470,7 +470,7 @@ function AdminDashboard({ onClose, showToast }) {
           fragranceProfile: editFragrance,
           description: editDescription,
           details: filteredDetails,
-          image: editImage || "/src/assets/images/Anti-Fungal Soap.png",
+          image: editImage || "/images/Anti-Fungal Soap.png",
           onSale: editOnSale,
           salePrice: editOnSale ? parseFloat(editSalePrice) : null,
           saleStart: editOnSale ? editSaleStart || null : null,

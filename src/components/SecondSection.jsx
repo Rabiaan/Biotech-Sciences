@@ -56,7 +56,7 @@ function SecondSection({ onLearnMoreClick }) {
             /* @__PURE__ */ jsx(
               "img",
               {
-                src: "/src/assets/images/skincare_woman_closeup_1783091734129.png",
+                src: "/images/skincare_woman_closeup_1783091734129.png",
                 alt: "Skincare woman closeup with gel patches",
                 className: "w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700",
                 referrerPolicy: "no-referrer"

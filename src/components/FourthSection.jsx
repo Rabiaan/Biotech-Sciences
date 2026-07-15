@@ -11,7 +11,7 @@ function FourthSection() {
           /* @__PURE__ */ jsx(
             motion.img,
             {
-              src: "/src/assets/images/girl_holding_skincare_1783092647172.png",
+              src: "/images/girl_holding_skincare_1783092647172.png",
               alt: "Inspirational banner - Beautiful girl holding skincare",
               className: "w-full h-full object-cover opacity-80",
               initial: { scale: 1.1 },

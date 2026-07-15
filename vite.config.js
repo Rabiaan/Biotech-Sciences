@@ -16,7 +16,7 @@ var stdin_default = defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== "true",
       watch: process.env.DISABLE_HMR === "true" ? null : {}
     },
-    publicDir: path.resolve(__dirname, "src/assets")
+    publicDir: "public"
   };
 });
 export {
